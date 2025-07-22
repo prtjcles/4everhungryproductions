@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>4everhungryproductions</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    body {
+      background: black;
+    }
+
+    video.bg-video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.4;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px #fff;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: red;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 5px;
+      text-decoration: none;
+      box-shadow: 0 0 10px red;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #ff2a2a;
+      box-shadow: 0 0 20px #ff2a2a;
+    }
+
+    audio {
+      margin-top: 30px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background video (optional) -->
+  <video autoplay muted loop class="bg-video">
+    <source src="https://cdn.pixabay.com/vimeo/240170643/Space%20-%205476.mp4?width=1280&hash=55165d8ec7d1cc7ceca750f2a32a8c7228f07d35" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="overlay">
+    <h1>4everhungryproductions</h1>
+    <a href="https://youtube.com" class="btn" target="_blank">🎧 Visit YouTube</a>
+
+    <!-- Audio player -->
+    <audio controls autoplay loop>
+      <source src="run out of breath suspect only.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <p style="margin-top: 10px; color: #ccc;">Now Playing: "Run Out of Breath (Suspect Only)"</p>
+  </div>
+
+</body>
+</html>
