@@ -2,216 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>4everhungryproductions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Background animation */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
       color: white;
-      background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #0f0c29);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
       text-align: center;
     }
-
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
     header {
-      padding: 30px 20px 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
     }
-
-    .logo {
-      max-width: 100px;
-      margin-bottom: 10px;
-    }
-
-    h1 {
+    .title {
       font-size: 2.8rem;
-      color: #00bfff;
-      text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 40px #00bfff;
-      margin: 10px 0 20px;
-    }
-
-    .social-icons {
-      margin-bottom: 20px;
-    }
-
-    .social-icons a {
-      display: inline-block;
-      margin: 0 10px;
+      font-weight: bold;
       color: white;
-      font-size: 28px;
-      text-decoration: none;
-      transition: transform 0.2s ease;
+      text-shadow: 0 0 15px white;
+      margin: 0.5rem 0;
     }
-
-    .social-icons a:hover {
-      transform: scale(1.2);
-      color: #00bfff;
+    nav {
+      margin: 1rem 0;
     }
-
-    .song {
-      margin: 30px auto;
-      max-width: 500px;
-      background-color: rgba(0,0,0,0.5);
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 15px #00bfff30;
-    }
-
-    .song h2 {
-      font-size: 1.4rem;
-      margin-bottom: 15px;
-    }
-
-    .custom-player {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      flex-direction: column;
-    }
-
-    .custom-button {
-      background: #00bfff;
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      color: black;
-      font-size: 20px;
-      cursor: pointer;
-      box-shadow: 0 0 10px #00bfff;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      background: #333;
-      border-radius: 5px;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: #00bfff;
-      transition: width 0.2s;
-    }
-
-    .footer {
-      margin: 50px 0 20px;
-      font-size: 0.9rem;
+    nav a {
       color: #ccc;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-size: 1.1rem;
     }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      .social-icons a { font-size: 24px; margin: 0 6px; }
+    nav a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    .container {
+      display: none;
+      padding: 2rem;
+    }
+    .active {
+      display: block;
+    }
+    .yt-btn {
+      display: inline-block;
+      background-color: red;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 15px red;
+      margin-top: 1rem;
+    }
+    audio {
+      margin-top: 1rem;
+    }
+    .socials i {
+      margin: 1rem 0.5rem;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+    }
+    .socials i:hover {
+      color: #0ff;
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
-
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
   <header>
-    <img src="https://via.placeholder.com/100x100.png?text=Logo" alt="Logo" class="logo"/>
-    <h1>4everhungryproductions</h1>
-    <div class="social-icons">
-      <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-      <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
-      <a href="#" title="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
-    </div>
+    <div class="title">4everhungryproductions</div>
+    <nav>
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('music')">Music</a>
+      <a href="#" onclick="showPage('about')">About</a>
+    </nav>
   </header>
 
-  <main>
-    <div class="song">
-      <h2>Run Out of Breath (Coming Soon)</h2>
-      <audio id="audio1" src="run-out-of-breath.mp3"></audio>
-      <div class="custom-player">
-        <button class="custom-button" onclick="togglePlay('audio1', this)">▶</button>
-        <div class="progress-bar" onclick="seek(event, 'audio1')">
-          <div class="progress-fill" id="progress-audio1"></div>
-        </div>
-      </div>
+  <div id="home" class="container active">
+    <a class="yt-btn" href="https://youtube.com" target="_blank">
+      <i class="fas fa-headphones"></i> Visit YouTube
+    </a>
+    <div>
+      <audio controls autoplay>
+        <source src="run_out_of_breath.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     </div>
-
-    <div class="song">
-      <h2>Beats Vol. 2 (Coming Soon)</h2>
-      <audio id="audio2" src="beats-vol2.mp3"></audio>
-      <div class="custom-player">
-        <button class="custom-button" onclick="togglePlay('audio2', this)">▶</button>
-        <div class="progress-bar" onclick="seek(event, 'audio2')">
-          <div class="progress-fill" id="progress-audio2"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="song">
-      <h2>Late Night Tape (Coming Soon)</h2>
-      <audio id="audio3" src="latenight-tape.mp3"></audio>
-      <div class="custom-player">
-        <button class="custom-button" onclick="togglePlay('audio3', this)">▶</button>
-        <div class="progress-bar" onclick="seek(event, 'audio3')">
-          <div class="progress-fill" id="progress-audio3"></div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <div class="footer">
-    &copy; 2025 4everhungryproductions. All rights reserved.
+    <p>Now Playing: "Run Out of Breath (Suspect Only)"</p>
   </div>
 
+  <div id="music" class="container">
+    <h2>Music Library</h2>
+    <p> (Coming Soon...)</p>
+    <p> (Coming Soon...)</p>
+    <p> (Coming Soon...)</p>
+  </div>
+
+  <div id="about" class="container">
+    <h2>About Us</h2>
+    <p>Contact: <a href="mailto:contact@4everhungryproductions.com">contact@4everhungryproductions.com</a></p>
+    <div class="socials">
+      <i class="fab fa-youtube"></i>
+      <i class="fab fa-tiktok"></i>
+      <i class="fab fa-snapchat"></i>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 4everhungryproductions. All rights reserved.
+   Made by Karl
+  </footer> 
+
+
   <script>
-    // Custom play toggle
-    function togglePlay(id, button) {
-      const audio = document.getElementById(id);
-      const others = document.querySelectorAll('audio');
-      others.forEach(el => { if (el !== audio) el.pause(); });
-
-      if (audio.paused) {
-        audio.play();
-        button.textContent = '⏸';
-      } else {
-        audio.pause();
-        button.textContent = '▶';
-      }
-    }
-
-    // Progress bar animation
-    const audios = document.querySelectorAll('audio');
-    audios.forEach(audio => {
-      const progress = document.getElementById('progress-' + audio.id);
-      audio.addEventListener('timeupdate', () => {
-        const percent = (audio.currentTime / audio.duration) * 100;
-        progress.style.width = percent + '%';
-      });
-      audio.addEventListener('ended', () => {
-        const button = document.querySelector(`[onclick*="${audio.id}"]`);
-        button.textContent = '▶';
-      });
-    });
-
-    // Seek function
-    function seek(event, audioId) {
-      const audio = document.getElementById(audioId);
-      const bar = event.currentTarget;
-      const clickX = event.offsetX;
-      const barWidth = bar.offsetWidth;
-      const seekTime = (clickX / barWidth) * audio.duration;
-      audio.currentTime = seekTime;
+    function showPage(id) {
+      document.querySelectorAll('.container').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
     }
   </script>
-
 </body>
 </html>
